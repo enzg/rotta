@@ -15,31 +15,15 @@
 <script>
   import Login from '@/components/generalcomponent/login'
   import Sidebar from '@/components/generalcomponent/sidebar'
-  import { invoke } from '@/libs/fetchLib'
   export default {
     name: 'app',
     data () {
       return {
-        islogin: false,
-        stoken: '',
-        userinfo:{
-          username: '',
-          password: '',
-          msn: ''
-        }
+        islogin: true,
+        stoken: ''
       }
     },
     methods: {
-      onSubmit () {
-        const cfg = {
-          url: '/player_login',
-          method: 'post',
-          data: userinfo
-        }
-        invoke(cfg).then(result=>{
-          console.log(result);
-        })
-      },
       forgetPassword () {
       },
       getStoken () {

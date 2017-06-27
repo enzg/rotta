@@ -7,16 +7,16 @@
     <div class="right">
       <el-form :model="userinfo" :rules="rules" :ref="userinfo">
         <el-form-item label="用户名" prop="username">
-          <el-input class="input" placeholder="请输入" v-model="userinfo.username" maxlength=16></el-input>
+          <el-input class="input" placeholder="请输入" v-model="userinfo.username" :maxlength='length'></el-input>
         </el-form-item>
         <el-form-item label="密码" class="justfy2" prop="password">
-          <el-input type="password" class="input" placeholder="请输入" v-model="userinfo.password" maxlength=16></el-input>
+          <el-input type="password" class="input" placeholder="请输入" v-model="userinfo.password" :maxlength='length'></el-input>
         </el-form-item>
         <el-form-item label="验证码" prop="msn">
           <el-input class="input1" placeholder="请输入" v-model="userinfo.msn"></el-input><img src="#" alt="验证码" class="verifyimg">
         </el-form-item>
         <el-form-item class="justfy3">
-          <el-button @click="onSubmit(userinfo)" class="justfy1 botton">提交</el-button>
+          <el-button @click="onSubmit" class="justfy1 botton">提交</el-button>
           <el-button @click="forgetPassword" class="botton">忘记密码</el-button>
         </el-form-item>
       </el-form>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { invoke } from '@/libs/fetchLib'
 export default {
   data () {
     var checkUsername = (rule, value, callback) => {
@@ -50,29 +51,36 @@ export default {
       }
       callback()
     } // 验证验证码
+    return {
       rules: {
         username: [
           {validator: checkUsername, trigger: 'blur'}
         ],
-        passwords: [
+        password: [
           {validator: checkPasswords, trigger: 'blur'}
         ],
-        verifycode: [
+        msn: [
           {validator: checkVerifycode, trigger: 'blur'}
         ]
-      }
+      },
+      userinfo: {
+        username: '',
+        password: '',
+        msn: ''
+      },
+      length: 16
     }
   },
-  props: [userinfo]
+  props: this.userinfo,
   methods: {
-    submitForm (formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          this.$message('登陆成功！')
-        } else {
-          this.$message.error('用户名或密码错误！')
-          return false
-        }
+    onSubmit () {
+      const cfg = {
+        url: '/player_login',
+        method: 'post',
+        data: this.userinfo
+      }
+      invoke(cfg).then(result => {
+        console.log(result)
       })
     },
     forgetPassword () {

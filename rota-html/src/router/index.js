@@ -18,10 +18,6 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
-      redirect: '/board'
-    },
-    {
       path: '/board',
       component: Board
     },
