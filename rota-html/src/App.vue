@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <!--<login></login>-->
-    <div class="rottatec">
+    <login v-if="islogin == false"></login>
+    <div class="rottatec" v-if="islogin == true">
       <div class="left">
       <sidebar></sidebar>
     </div>
@@ -15,8 +15,36 @@
 <script>
   import Login from '@/components/generalcomponent/login'
   import Sidebar from '@/components/generalcomponent/sidebar'
+  import { invoke } from '@/libs/fetchLib'
   export default {
     name: 'app',
+    data () {
+      return {
+        islogin: false,
+        stoken: '',
+        userinfo:{
+          username: '',
+          password: '',
+          msn: ''
+        }
+      }
+    },
+    methods: {
+      onSubmit () {
+        const cfg = {
+          url: '/player_login',
+          method: 'post',
+          data: userinfo
+        }
+        invoke(cfg).then(result=>{
+          console.log(result);
+        })
+      },
+      forgetPassword () {
+      },
+      getStoken () {
+      }
+    },
     components: {
       Login,
       Sidebar

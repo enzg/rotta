@@ -9,14 +9,14 @@
         <el-form-item label="用户名" prop="username">
           <el-input class="input" placeholder="请输入" v-model="userinfo.username" maxlength=16></el-input>
         </el-form-item>
-        <el-form-item label="密码" class="justfy2" prop="passwords">
-          <el-input type="password" class="input" placeholder="请输入" v-model="userinfo.passwords" maxlength=16></el-input>
+        <el-form-item label="密码" class="justfy2" prop="password">
+          <el-input type="password" class="input" placeholder="请输入" v-model="userinfo.password" maxlength=16></el-input>
         </el-form-item>
-        <el-form-item label="验证码" prop="verifycode">
-          <el-input class="input1" placeholder="请输入" v-model="userinfo.verifycode"></el-input><img src="#" alt="验证码" class="verifyimg">
+        <el-form-item label="验证码" prop="msn">
+          <el-input class="input1" placeholder="请输入" v-model="userinfo.msn"></el-input><img src="#" alt="验证码" class="verifyimg">
         </el-form-item>
         <el-form-item class="justfy3">
-          <el-button @click="submitForm(userinfo)" class="justfy1 botton">提交</el-button>
+          <el-button @click="onSubmit(userinfo)" class="justfy1 botton">提交</el-button>
           <el-button @click="forgetPassword" class="botton">忘记密码</el-button>
         </el-form-item>
       </el-form>
@@ -50,12 +50,6 @@ export default {
       }
       callback()
     } // 验证验证码
-    return {
-      userinfo: {
-        username: '',
-        passwords: '',
-        verifycode: ''
-      }, // 用户信息(用户名/密码/验证码)
       rules: {
         username: [
           {validator: checkUsername, trigger: 'blur'}
@@ -69,12 +63,12 @@ export default {
       }
     }
   },
+  props: [userinfo]
   methods: {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.$message('登陆成功！')
-          this.$router.push('agentlist')
         } else {
           this.$message.error('用户名或密码错误！')
           return false
