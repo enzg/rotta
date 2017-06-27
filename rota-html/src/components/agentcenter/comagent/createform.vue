@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="createform">
-      <h2 class="title">基本信息</h2>
+      <h2 class="title">基本信息$</h2>
  	    <p><span>商户标识</span><el-input placeholder="必须以字母开头" class="input"></el-input></p>
       	<p><span>商户昵称</span><el-input placeholder="请输入" class="input"></el-input></p>
       	<p class="justfy1"><span >商户抽成比</span><el-input placeholder="请输入" class="input"></el-input></p>
