@@ -1,8 +1,8 @@
 <template>
     <div>
-        <el-row class="tac">
+        <el-row class="sidebar">
             <el-col>
-                <el-menu default-active="board" class="el-menu-vertical-demo"  theme="dark" :router= "router" :unique-opened="unique">
+                <el-menu default-active="board" class="el-menu-vertical-demo"  theme="dark" :router= "router">
                     <el-menu-item index="">NA LOGO</el-menu-item>
                     <el-menu-item index="board">看板</el-menu-item>
                     <el-submenu index="0">
@@ -38,7 +38,6 @@ export default {
   name: 'sidebar',
   data () {
     return {
-      unique: true,
       router: true
     }
   }
@@ -46,4 +45,5 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.sidebar{}
 </style>

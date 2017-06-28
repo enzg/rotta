@@ -5,6 +5,8 @@ import Outlist from 'view/agentcenter/outagent/outlist' // 出口代理商列表
 import Createout from 'view/agentcenter/outagent/createout' // 创建出口代理商
 import Comlist from 'view/agentcenter/comagent/comlist' // 一般代理商列表
 import Createcom from 'view/agentcenter/comagent/createcom' // 创建一般代理商
+import Outdetailed from 'view/agentcenter/outagent/outdetailed' // 出口代理详细列表
+import Comdetailed from 'view/agentcenter/comagent/comdetailed' // 出口代理详细列表
 import Playercenter from 'view/playercenter/playercenter' // 玩家中心
 import Gamecenter from 'view/gamecenter/gamecenter' // 游戏中心
 import Operationcenter from 'view/operationcenter/operationcenter' // 运营中心
@@ -36,6 +38,14 @@ export default new Router({
     {
       path: '/createcom',
       component: Createcom
+    },
+    {
+      path: '/outdetailed',
+      component: Outdetailed
+    },
+    {
+      path: '/comdetailed',
+      component: Comdetailed
     },
     {
       path: '/playercenter',

@@ -40,6 +40,6 @@
 *{margin: 0;padding: 0;}
 body,html{font-size: 12px;}
 .rottatec{display: flex;}
-.left{flex: 0.15}
+.left{flex: 0.15;background-color: #324157;}
 .right{flex: 0.85}
 </style>

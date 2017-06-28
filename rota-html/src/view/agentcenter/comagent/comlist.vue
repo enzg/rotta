@@ -6,7 +6,7 @@
 	      <el-breadcrumb-item>出口代理商 </el-breadcrumb-item>
 	      <el-breadcrumb-item><span  class="large">一般商户列表</span> </el-breadcrumb-item>
 	    </el-breadcrumb>
-	</div>
+	  </div>
 	<searchbox></searchbox>
     <p class="searchResult">共搜索到 {{searchinfo}} 条数据</p>
     <el-button type="primary" class="justfy1">创建新代理</el-button>
